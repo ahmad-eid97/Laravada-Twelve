@@ -18,7 +18,9 @@
                     </a>
             </div>
             <div class="col-lg-6 image">
-                <img class="img-fluid"  src="https://the7.io/business-advisors/wp-content/uploads/sites/72/elementor/thumbs/art011-pds1a8pw55vosw0svd1ymgwfx0v59wcze4nxbvvq4w.jpg" alt="">
+                <img src="/assets/images/blob2.svg" alt="blob" class="blobImage1">
+                <img class="img-fluid mainImage"  src="https://the7.io/business-advisors/wp-content/uploads/sites/72/elementor/thumbs/art011-pds1a8pw55vosw0svd1ymgwfx0v59wcze4nxbvvq4w.jpg" alt="">
+                <img src="/assets/images/blob1.svg" alt="blob" class="blobImage2">
             </div>
         </div>
     </section>
@@ -61,6 +63,24 @@ export default {
         line-height: 50.6px;
         margin-bottom: 30px;
         text-align: left;
+    }
+
+    .blobImage1 {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        opacity: 0.3;
+        width: 400px;
+        z-index: 1;
+    }
+
+    .blobImage2 {
+        position: absolute;
+        bottom: -100px;
+        right: 0;
+        opacity: 0.3;
+        width: 400px;
+        z-index: 1;
     }
 
     @include sm {
@@ -144,11 +164,16 @@ export default {
         position: relative;
     }
     .intro .image img {
-        -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr012.svg);
+        /* -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr012.svg); */
         -webkit-mask-size: contain;
         -webkit-mask-position: center center;
         -webkit-mask-repeat: no-repeat;
         max-width: 580px;
+        border-radius: 30% 70% 25% 75% / 52% 47% 53% 48%;
+    }
+    .mainImage {
+        position: relative !important;
+        z-index: 2;
     }
     .intro .image .image-icon {
         color: rgb(94, 100, 107);

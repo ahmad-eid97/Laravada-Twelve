@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'seven-business-advisors',
+    title: 'Laravada',
     htmlAttrs: {
       lang: 'en'
     },

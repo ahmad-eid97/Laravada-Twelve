@@ -2,7 +2,9 @@
     <section class="contact">
         <div class="row m-0 align-items-center justify-content-center">
             <div class="col-lg-6 image">
-                <img class="img-fluid"  src="https://the7.io/business-advisors/wp-content/uploads/sites/72/elementor/thumbs/art010-pds1596pvt1x7d9kzpg7w87egfg1fpk91g26o19x5c.jpg" alt="">
+                <img src="/assets/images/blob2.svg" alt="blob" class="blobImage1">
+                <img class="img-fluid mainImage"  src="https://the7.io/business-advisors/wp-content/uploads/sites/72/elementor/thumbs/art010-pds1596pvt1x7d9kzpg7w87egfg1fpk91g26o19x5c.jpg" alt="">
+                <img src="/assets/images/blob1.svg" alt="blob" class="blobImage2">
             </div>
             <div class="col-lg-6 textSide" style="padding: 0 60px;">
                 <h3>
@@ -108,12 +110,31 @@ export default {
         display: flex;
         justify-content: center;
     }
+
+    .blobImage1 {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        opacity: 0.3;
+        width: 300px;
+        z-index: 1;
+    }
+
+    .blobImage2 {
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+        opacity: 0.3;
+        width: 300px;
+        z-index: 1;
+    }
     .contact .image img {
-        -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr009.svg);
+        /* -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr009.svg); */
         -webkit-mask-size: contain;
         -webkit-mask-position: center center;
         -webkit-mask-repeat: no-repeat;
         max-width: 580px;
+        border-radius: 30% 70% 25% 75% / 52% 47% 53% 48%;
     }
     .contact .image .image-icon {
         color: rgb(94, 100, 107);

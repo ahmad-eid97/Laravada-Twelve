@@ -117,7 +117,7 @@ export default {
 }
 .choose-area .choose-img img {
   border-radius: 15px;
-  -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr012.svg);
+  /* -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr012.svg); */
     -webkit-mask-size: contain;
     -webkit-mask-position: center center;
     -webkit-mask-repeat: no-repeat;
