@@ -4,21 +4,20 @@
             <div class="section-title text-center">
                 <span class="sp-color2">Our Services</span>
                 <h2>We Provide a Wide Variety of It Services</h2>
-                
                 <p class="margin-auto mx-auto">
                 Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec
                 </p>
             </div>
-            <div class="row pt-45 justify-content-center">
+            <div class="row pt-45">
                 <div v-for="service in services.services" :key="service.id" class="col-lg-3 col-sm-6 col-md-4" @click="$router.push(`/service/${service.id}`)">
                     <div class="services-card services-style-bg">
                         <div class="icon">
-                            <font-awesome-icon icon="fa-solid fa-person-dots-from-line" />
+                            <font-awesome-icon :icon="service.icon" />
                         </div>
                         <h3>
                             <router-link to="service">{{service.title}}</router-link>
                         </h3>
-                        <p>{{service.description}}</p>
+                        <p>{{service.short_description}}</p>
                         <router-link to="service" class="learn-btn">Learn More 
                             <i class="bx bx-chevron-right"></i>
                         </router-link>
@@ -57,39 +56,41 @@ export default {
 }
 
 .services-style-area  .section-title span {
-  color: rgb(0, 206, 200);
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 33.8px;
-    margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: block;
+  color: var(--main-color);
 }
 .services-style-area .section-title h2 {
-    color: #000;
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 50.6px;
-    margin-bottom: 30px;
+    max-width: 600px;
+    color: #252525;
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 42px;
+    text-align: left;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-left: auto;
     text-align: center;
 }
-.services-style-area .section-title .seprator img {
-    width: 70px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
+
 .services-style-area .section-title p {
   max-width: 600px;
 }
 .services-card {
+    box-shadow: 0 0 15px rgba(0,0,0,.07);
     padding: 40px 30px 35px;
-    border-radius: 8px;
-    border: 2px solid #e2e9ef;
+    border-radius: 12px;
+    background-color: #fff;
     position: relative;
     z-index: 1;
     margin-bottom: 30px;
-    color: #212934;
+    color: #252525;
 }
 .services-card h3 a {
-    color: #212934;
+    color: #252525;
     font-size: 22px;
 
 }
@@ -105,8 +106,8 @@ export default {
     right: 0;
     width: 90px;
     height: 90px;
-    background-color:#05cfc9;
-    border-radius: 272px 0 180px;
+    background-color:var(--main-color);
+    border-radius: 12px;
     opacity: .1;
     -webkit-transition: .7s;
     transition: .7s;
@@ -121,8 +122,8 @@ export default {
     right: 0;
     width: 75px;
     height: 75px;
-    background-color:#05cfc9;
-    border-radius: 170px 0 136px;
+    background-color:var(--main-color);
+    border-radius: 12px;
     opacity: .1;
     -webkit-transition: .7s;
     transition: .7s;
@@ -130,7 +131,7 @@ export default {
 .services-card:hover::before {
     width: 100%;
     height: 100%;
-    border-radius: 60px 8px;
+    border-radius: 12px;
     opacity: 1;
 }
 .services-card .icon {
@@ -139,8 +140,8 @@ export default {
     height: 80px;
     line-height: 80px;
     color: #fff;
-    background-color:#05cfc9;
-    border-radius: 30px 8px;
+    background-color:var(--main-color);
+    border-radius: 12px;
     display: inline-block;
     text-align: center;
     margin-bottom: 12px;
@@ -152,9 +153,9 @@ export default {
     width: 80px;
     height: 80px;
     line-height: 80px;
-    color: #05cfc9;
+    color: var(--main-color);
     background-color: #fff;
-    border-radius: 30px 8px;
+    border-radius: 12px;
     display: inline-block;
     text-align: center;
     margin-bottom: 12px;

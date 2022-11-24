@@ -4,7 +4,6 @@
             <div class="section-title text-center">
                 <span class="sp-color2">Latest Blog</span>
                 <h2>Let’s Check Some Latest Blog</h2>
-                
             </div>
             <div class="row pt-45">
                 <div v-for="blog in blogs.blogs" :key="blog.id" class="col-lg-4 col-md-6" @click="$router.push(`/blog/${blog.id}`)">
@@ -14,8 +13,8 @@
                                 <img :src="blog.category.image" alt="Blog Images">
                             </router-link>
                             <div class="blog-tag">
-                                <h3>11</h3>
-                                <span>Dec</span>
+                                <h3>{{ $date(new Date(blog.publish_date), 'dd') }}</h3>
+                                <span>{{ $date(new Date(blog.publish_date), 'MMM') }}</span>
                             </div>
                         </div>
                         <h3 class="title">
@@ -24,13 +23,13 @@
                         <div class="content">
                             <ul>
                                 <li>
-                                    <a href="#"><font-awesome-icon icon="fa-regular fa-user" />By Admin</a>
+                                    <a href="#"><font-awesome-icon icon="fa-regular fa-user" />By {{blog.username}}</a>
                                 </li>
                                 <li>
                                     <a href="index.html"><font-awesome-icon icon="fa-solid fa-tag" />Business</a>
                                 </li>
                             </ul>
-                            <p>{{blog.description}}</p>
+                            <p>{{blog.short_description}}</p>
                         </div>
                     </div>
                 </div>
@@ -61,18 +60,23 @@ export default {
 
 <style>
     .blog-area .section-title span {
-        color: rgb(0, 206, 200);
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 33.8px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        display: block;
+        color: var(--main-color);
     }
     .blog-area .section-title h2 {
-        color: #000;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 50.6px;
-        margin-bottom: 30px;
+        max-width: 600px;
+        color: #212529;
+        font-size: 35px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 42px;
+        text-align: left;
+        margin-top: 10px;
+        margin-right: auto;
+        margin-bottom: 15px;
+        margin-left: auto;
         text-align: center;
     }
     .blog-area .section-title .seprator img {
@@ -85,8 +89,7 @@ export default {
         -webkit-box-shadow: 0 0 15px rgba(0,0,0,.05);
         box-shadow: 0 0 15px rgba(0,0,0,.05);
         margin-bottom: 30px;
-        border-radius: 8px;
-        border: 2px solid #e2e9ef;
+        border-radius: 12px;
         -webkit-transition: .9s;
         transition: .9s;
         border: 1px solid #f1f1f1;
@@ -107,7 +110,7 @@ export default {
         margin: 0 0 0;
     }
     .blog-card .blog-img img {
-        border-radius: 8px 8px 0 0;
+        border-radius: 12px 12px 0 0;
         height: 250px;
         width: 100%;
     }
@@ -116,10 +119,9 @@ export default {
         top: -10px;
         right: 30px;
         text-align: center;
-        border-radius: 8px;
-        border: 2px solid #e2e9ef;
-        background: #fff;
+        background-color: var(--main-color);
         padding: 15px 12px;
+        border-radius: 12px;
         text-align: center;
     }
     .blog-card:hover .blog-img .blog-tag {
@@ -127,32 +129,30 @@ export default {
         top: -20px;
         right: 30px;
         text-align: center;
-        border-radius: 8px;
-        border: 2px solid #e2e9ef;
-        background: #fff;
+        background-color: var(--main-color);
         padding: 15px 12px;
+        border-radius: 12px;
         text-align: center;
     }
     .blog-card .blog-img .blog-tag h3 {
-        font-size: 22px;
-        color: #05cfc9;
+        font-size: 17px;
+        color: #fff;
         line-height: 1;
         margin-bottom: 0;
         font-weight: 500;
         
     }
     .blog-card .blog-img .blog-tag span {
-        font-size: 17px;
-        color: #05cfc9;
+        color: #fff;
         line-height: 1;
         font-weight: 500;
     }
     .blog-card .content ul li a {
-        color: #3847d2;
+        color: #212529;
     }
     .blog-card .content ul li a svg{
         font-size: 20px;
-        color: #05cfc9;
+        color: var(--main-color);
         margin-right: 5px;
         position: relative;
         top: 3px;
@@ -175,7 +175,7 @@ export default {
     .blog-card h3.title {
         font-size: 22px;
         padding: 10px 30px;
-        background: #05cfc9; 
+        background: var(--main-color); 
         text-align: center;
         position: relative;
         z-index: 1;

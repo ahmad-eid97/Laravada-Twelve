@@ -112,3 +112,45 @@ section {
    direction: rtl;
    text-align: right;
 }
+
+
+.page-heading {
+   padding-top: 150px;
+   padding-bottom: 150px;
+   position: relative;
+   z-index: 1;
+   background-color: var(--main-color);
+   background-position: top;
+   background-repeat: no-repeat;
+   background-size: cover;
+   margin-top:0;
+   padding-right: 30px;
+   margin-bottom: 0px;
+   padding-left: 30px;
+   text-align: center;
+}
+.page-heading h3 {
+   font-weight: 400;
+margin: 10px 0 15px;
+font-size: 45px;
+letter-spacing: -1px;
+color: #fff;
+line-height: 52px;
+text-align: center;
+}
+.page-heading .breadcrumb {
+   display: flex;
+   justify-content: center;
+}
+.page-heading a{
+   font-size: 18px;
+   font-weight: 400;
+   line-height: 28.8px;
+   color: #fff;
+   text-decoration: none;
+   display: inline-block;
+   margin: 0 10px;
+}
+.page-heading a:hover {
+   color: #212529;
+}
