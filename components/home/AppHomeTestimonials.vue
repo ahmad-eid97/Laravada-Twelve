@@ -6,78 +6,18 @@
         <div class="row m-0">
 
             <swiper :options="swiperOption">
-                <swiper-slide>
+                <swiper-slide v-for="item in testimonials" :key="item.id">
                 <div>
                     <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/team0007-768x768.jpg" alt="">
+                        <img :src="item.image" :alt="item.title">
                         <p>
-                            Wow! Commodo egestas, feugiat leo eget ipsum dolor sitvulputate metus vestibulum ipsum.
+                            {{item.description}}
                         </p>
                         <h5>
-                            Bernard Blackwood
+                            {{item.name}}
                         </h5>
                         <h6>
-                            Jackerson Lab
-                        </h6>
-                        <p>
-                            <a href="#" class="btn">View case</a>
-                        </p>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div>
-                    <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/team0008-768x768.jpg" alt="">
-                        <p>
-                            Super! 300%+ lorem neque mauris et leo ipsum ulvinar lorem neque. Thanx!
-                        </p>
-                        <h5>
-                            John Richmond
-                        </h5>
-                        <h6>
-                            Zants 
-                        </h6>
-                        <p>
-                            <a href="#" class="btn">View case</a>
-                        </p>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div>
-                    <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/team0001-768x768.jpg" alt="">
-                        <p>
-                            Lorem metus vestibulum ipsum dolor sit amet, consectetur adipiscing elit odio nec urna metus vestibulum.
-                        </p>
-                        <h5>
-                            Alexandra Brown
-                        </h5>
-                        <h6>
-                            Susan Bradley & Co
-                        </h6>
-                        <p>
-                            <a href="#" class="btn">View case</a>
-                        </p>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div>
-                    <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/team0003-768x768.jpg" alt="">
-                        <p>
-                            Consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Unbelievable!
-                        </p>
-                        <h5>
-                            Tiffany Anderson
-                        </h5>
-                        <h6>
-                            Kate & Rose Studio
+                            {{item.job}}
                         </h6>
                         <p>
                             <a href="#" class="btn">View case</a>
@@ -94,6 +34,7 @@
 
 export default {
     name: 'AppHomeTestimonials',
+    props: ["testimonials"],
     data() {
         return {
         swiperOption: {

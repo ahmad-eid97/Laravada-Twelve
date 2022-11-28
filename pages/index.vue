@@ -15,7 +15,7 @@
         <app-home-why></app-home-why>
         <app-home-blogs></app-home-blogs>
         <app-home-contact-divider-bottom></app-home-contact-divider-bottom> -->
-        <app-home-testimonials></app-home-testimonials>
+        <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
 
 
         <!-- WHY WORK WITH US Start -->
@@ -56,6 +56,13 @@ import AppHomeTestimonials from '../components/home/AppHomeTestimonials.vue'
 
 export default {
   name: 'Home',
+  async asyncData({ $axios }) {
+    const testimonials = await $axios.get('/testimonials');
+
+    return {
+      testimonials: testimonials.data.data.testimonials
+    }
+  },
   components: {
     AppHomeSlider,
     AppHomeCompetence,
