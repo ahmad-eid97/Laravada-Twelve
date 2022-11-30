@@ -8,76 +8,19 @@
         <div class="row m-0">
 
             <swiper :options="swiperOption">
-                <swiper-slide>
+                <swiper-slide v-for="service in services" :key="service.id">
                 <div>
                     <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/l0-2-768x384.png" alt="">
+                        <img :src="service.image" :alt="service.title">
                         <h4 class="">
-                            New strategy implementation
+                            {{service.title}}
                         </h4>
                         
                         <div class="row">
 
-                            <a href="#" class="btn col-auto">
+                            <nuxt-link :to="`/service/${service.id}`" class="btn col-auto">
                                 Learn more
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div>
-                    <div class="item">
-                    <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/l0-3-768x384.png" alt="">
-                    <h4 class="">
-                        Successful international product launch
-                    </h4>
-                    
-                    <div class="row">
-
-                        <a href="#" class="btn col-auto">
-                            Learn more
-                        </a>
-
-                    </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div>
-                    <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/l0-4-768x384.png" alt="">
-                        <h4 class="">
-                            Full business reorganisation in 30 days
-                        </h4>
-                        
-                        <div class="row">
-
-                            <a href="#" class="btn col-auto">
-                                Learn more
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                </swiper-slide>
-
-                <swiper-slide>
-                <div>
-                    <div class="item">
-                        <img src="https://the7.io/business-advisors/wp-content/uploads/sites/72/2020/04/llgg000-768x384.png" alt="">
-                        <h4 class="">
-                            150% more returning customers
-                        </h4>
-                        
-                        <div class="row">
-
-                            <a href="#" class="btn col-auto">
-                                Learn more
-                            </a>
+                            </nuxt-link>
 
                         </div>
                     </div>
@@ -92,6 +35,7 @@
 <script>
 export default {
     name: 'AppHomeCases',
+    props: ["services"],
     data () {
         return {
         swiperOption: {
@@ -168,7 +112,8 @@ export default {
     }
     .cases .item img {
         margin: 0 auto 40px;
-        width: 260px;
+        width: 100%;
+        height: 150px;
     }
     .cases .item h4 {
         color: rgb(0, 0, 0);

@@ -3,8 +3,8 @@
         <app-home-slider></app-home-slider>
         <app-home-competence></app-home-competence>
         <app-home-contact></app-home-contact>
-        <app-home-cases></app-home-cases>
-        <app-home-why></app-home-why>
+        <app-home-cases :services="services"></app-home-cases>
+        <app-home-why :whyUs="whyUs"></app-home-why>
         <!-- <app-home-feature></app-home-feature>
 
         <app-home-services></app-home-services>
@@ -59,8 +59,14 @@ export default {
   async asyncData({ $axios }) {
     const testimonials = await $axios.get('/testimonials');
 
+    const services = await $axios.get('/services');
+
+    const whyUs = await $axios.get('/sections/why_choose_us');
+
     return {
-      testimonials: testimonials.data.data.testimonials
+      testimonials: testimonials.data.data.testimonials,
+      services: services.data.data.services,
+      whyUs: whyUs.data.data
     }
   },
   components: {

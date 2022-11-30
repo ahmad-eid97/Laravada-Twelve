@@ -3,37 +3,21 @@
         <div class="row m-0 align-items-center justify-content-center">
             <div class="col-lg-6" style="padding: 0 60px;">
                     <h3>
-                        Why work with us
+                        {{whyUs.find(one => one.key === 'why_choose_us_title').value}}
                     </h3>
                     <p>
-                        We consectetur adipiscing elit tempor incididunt ut labore. Wondering ipsum dolor sit amet? We consectetur adipiscing ipsum nulla glavrida elit tempor incididunt.
+                        {{whyUs.find(one => one.key === 'why_choose_us_description').value}}
                     </p>
                     <ul>
-                        <li>
-                            <font-awesome-icon icon="fa-solid fa-check" />
-                            Duis aute irure dolor in ipsum
-                        </li>
-                        <li>
-                            <font-awesome-icon icon="fa-solid fa-check" />
-                            Lopsum in lorem ipsum amet dolor glavrida
-                        </li>
-                        <li>
-                            <font-awesome-icon icon="fa-solid fa-check" />
-                            In det nulla amet glavridsa reprehend
-                        </li>
-                        <li>
-                            <font-awesome-icon icon="fa-solid fa-check" />
-                            Sit lorem ipsum dolor sit amet glavrida
-                        </li>
-                        <li>
-                            <font-awesome-icon icon="fa-solid fa-check" />
-                            Lorem ipsum in lorem ipsum amet dolor glavrida
+                        <li v-for="item in whyUs.find(one => one.key === 'why_choose_us_list').value" :key="item">
+                            <font-awesome-icon :icon="item.icon" />
+                            {{item.title}}
                         </li>
                     </ul>
             </div>
             <div class="col-lg-6 image">
                 <img src="/assets/images/blob2.svg" alt="blob" class="blobImage1">
-                <img class="img-fluid mainImage"  src="https://the7.io/business-advisors/wp-content/uploads/sites/72/elementor/thumbs/art008-pdrzl0icyo2ajayjee9tpf4iwgnevoafb2uay0nxg0.jpg" alt="">
+                <img class="img-fluid mainImage"  :src="whyUs.find(one => one.key === 'why_choose_us_image').value" alt="image">
                 <img src="/assets/images/blob1.svg" alt="blob" class="blobImage2">
             </div>
         </div>
@@ -44,6 +28,7 @@
 
 export default {
     name: 'AppHomeWhy',
+    props: ["whyUs"],
     data() {
         return {
             
