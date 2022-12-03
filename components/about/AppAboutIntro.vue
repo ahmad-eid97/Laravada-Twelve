@@ -20,19 +20,14 @@
                         </p>
                         <h3>We Have 22+ Years Of Experience. We Offer It Solutions , Digital Technology Service</h3>
                         <div class="skill-bar" data-percentage="90%">
-                            <h4 class="progress-title-holder clearfix">
-                                <span class="progress-title">Analytics</span>
-                            </h4>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div v-for="item in aboutSection.find(one => one.key === 'about_list').value" :key="item">
+                                <h4 class="progress-title-holder clearfix">
+                                    <span class="progress-title">{{item.title}}</span>
+                                </h4>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" :style="{width: item.percentage+'%'}" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
-                            <h4 class="progress-title-holder clearfix">
-                                <span class="progress-title">Solutions</span>
-                            </h4>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                                
                         </div>
                     </div>
                 </div>

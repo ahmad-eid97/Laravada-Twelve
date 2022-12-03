@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-        <app-home-slider></app-home-slider>
-        <app-home-competence></app-home-competence>
-        <app-home-contact></app-home-contact>
-        <app-home-cases :services="services"></app-home-cases>
-        <app-home-why :whyUs="whyUs"></app-home-why>
-        <!-- <app-home-feature></app-home-feature>
+    <app-home-slider></app-home-slider>
+    <app-home-competence></app-home-competence>
+    <app-home-contact></app-home-contact>
+    <app-home-cases :services="services"></app-home-cases>
+    <app-home-why :whyUs="whyUs"></app-home-why>
+    <!-- <app-home-feature></app-home-feature>
 
         <app-home-services></app-home-services>
         <app-home-contact-divider></app-home-contact-divider>
@@ -15,20 +15,18 @@
         <app-home-why></app-home-why>
         <app-home-blogs></app-home-blogs>
         <app-home-contact-divider-bottom></app-home-contact-divider-bottom> -->
-        <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
+    <app-home-testimonials :testimonials="testimonials"></app-home-testimonials>
 
+    <!-- WHY WORK WITH US Start -->
+    <!-- WHY WORK WITH US End -->
 
-        <!-- WHY WORK WITH US Start -->
-        <!-- WHY WORK WITH US End -->
+    <!-- testimonials Section Start -->
+    <!-- testimonials Section End -->
 
+    <!-- <app-home-news></app-home-news> -->
 
-        <!-- testimonials Section Start -->
-        <!-- testimonials Section End -->
-
-        <!-- <app-home-news></app-home-news> -->
-
-        <!-- Services Section Start -->
-        <!-- <app-home-services-offers></app-home-services-offers> -->
+    <!-- Services Section Start -->
+    <!-- <app-home-services-offers></app-home-services-offers> -->
   </div>
 </template>
 
@@ -43,31 +41,34 @@
 // import AppHomePrinciples from '../components/home/AppHomePrinciples.vue'
 // import AppHomeServices from '../components/home/AppHomeServices.vue'
 // import AppHomeServicesOffers from '../components/home/AppHomeServicesOffers.vue'
-import AppHomeSlider from '../components/home/AppHomeSlider.vue'
-import AppHomeCompetence from '../components/home/AppHomeCompetence.vue'
-import AppHomeContact from '../components/home/AppHomeContact.vue'
-import AppHomeCases from '../components/home/AppHomeCases.vue'
-import AppHomeWhy from '../components/home/AppHomeWhy.vue'
+import AppHomeSlider from "../components/home/AppHomeSlider.vue";
+import AppHomeCompetence from "../components/home/AppHomeCompetence.vue";
+import AppHomeContact from "../components/home/AppHomeContact.vue";
+import AppHomeCases from "../components/home/AppHomeCases.vue";
+import AppHomeWhy from "../components/home/AppHomeWhy.vue";
 
-import AppHomeTestimonials from '../components/home/AppHomeTestimonials.vue'
+import AppHomeTestimonials from "../components/home/AppHomeTestimonials.vue";
 // import AppHomeWhy from '../components/home/AppHomeWhy.vue'
 // @ is an alias to /src
 
-
 export default {
-  name: 'Home',
-  async asyncData({ $axios }) {
-    const testimonials = await $axios.get('/testimonials');
+  name: "Home",
+  async asyncData({ $axios, app }) {
+    const testimonials = await $axios.get("/testimonials");
 
-    const services = await $axios.get('/services');
+    const services = await $axios.get("/services");
 
-    const whyUs = await $axios.get('/sections/why_choose_us');
+    const whyUs = await $axios.get("/sections/why_choose_us", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
 
     return {
       testimonials: testimonials.data.data.testimonials,
       services: services.data.data.services,
-      whyUs: whyUs.data.data
-    }
+      whyUs: whyUs.data.data,
+    };
   },
   components: {
     AppHomeSlider,
@@ -87,6 +88,6 @@ export default {
     // AppHomeCases,
     // AppHomeAchievements,
     // AppHomeContactDividerBottom
-  }
-}
+  },
+};
 </script>
