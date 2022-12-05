@@ -6,7 +6,7 @@
     <div class="row m-0 justify-content-center">
       <div class="col-sm-6 col-lg-4">
         <div class="item">
-          <font-awesome-icon icon="fa-solid fa-cloud-arrow-down" />
+          <i class="fa-solid fa-cloud-arrow-down"></i>
           <h4 class="">Software & automatisation</h4>
           <p>starting from <span>$999</span></p>
           <div class="row">
@@ -16,7 +16,7 @@
       </div>
       <div class="col-sm-6 col-lg-4">
         <div class="item">
-          <font-awesome-icon icon="fa-solid fa-box-archive" />
+          <i class="fa-solid fa-box-archive"></i>
           <h4 class="">Business audit & analytics</h4>
           <p>starting from <span>$1509</span></p>
           <div class="row">
@@ -26,7 +26,7 @@
       </div>
       <div class="col-sm-6 col-lg-4">
         <div class="item">
-          <font-awesome-icon icon="fa-solid fa-user-check" />
+          <i class="fa-solid fa-user-check"></i>
           <h4 class="">Quality control management</h4>
           <p>starting from <span>$750</span></p>
           <div class="row">
@@ -83,7 +83,7 @@ export default {
   padding-top: 45px;
   justify-content: center;
 }
-.competence .item svg {
+.competence .item i {
   color: rgb(0, 206, 200);
   display: block;
   font-size: 48px;

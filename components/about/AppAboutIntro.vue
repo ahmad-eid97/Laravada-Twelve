@@ -4,21 +4,21 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="clients-slider-img">
-                        <img src="/assets/images/about-img5.png" alt="About Images">
+                        <img :src="aboutSection.find(one => one.key === 'about_image').value" alt="About Images">
                         <div class="clients-slider-circle"></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="textSide">
-                        <h5>About Your Company</h5>
+                    <div class="testSide">
+                        <h5>{{aboutSection.find(one => one.key === 'about_title').value}}</h5>
                         <h2>
-                            We Are Increasing Business With Promising It Services
+                            {{aboutSection.find(one => one.key === 'about_sub_title').value}}
                         </h2>
                         
                         <p>
-                            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum auctor a ornare odio. 
+                            {{aboutSection.find(one => one.key === 'about_description').value}}
                         </p>
-                        <h3>We Have 22+ Years Of Experience. We Offer It Solutions , Digital Technology Service</h3>
+                        <h3>{{aboutSection.find(one => one.key === 'about_title_experience').value}}</h3>
                         <div class="skill-bar" data-percentage="90%">
                             <div v-for="item in aboutSection.find(one => one.key === 'about_list').value" :key="item">
                                 <h4 class="progress-title-holder clearfix">
@@ -38,17 +38,17 @@
 
 <script>
 export default {
-    name: 'AppAboutIntro'
-
+    name: 'AppAboutIntro',
+    props: ["aboutSection"],
 }
 </script>
 
 <style>
-.textSide {
-    padding-top: 40px
-}
+    .testSide {
+        margin-top: 40px;
+    }
     .about-intro {
-        
+        background-color: #f8f8f8;
     }
     .about-intro .clients-slider-img {
         position: relative;
@@ -69,28 +69,27 @@ export default {
         height: 80%;
         -webkit-animation: border-transform 15s infinite ease-in-out;
         animation: border-transform 15s infinite ease-in-out;
-        background: #05cfc9;
+        background: var(--main-color);
     }
     .about-intro h5 {
-        color: rgb(0, 206, 200);
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 33.8px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        display: block;
+        color: var(--main-color);
     }
     .about-intro h2 {
-        color: rgb(0, 0, 0);
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 50.6px;
-        margin-bottom: 30px;
+        color: #212529;
+        font-size: 35px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 42px;
         text-align: left;
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-bottom: 15px;
+        margin-left: 0px;
     }
-    .about-intro .seprator img {
-        width: 70px;
-        margin-top: 5px;
-        margin-bottom: 20px;
-    }
+    
     .about-intro p {
         color: #9c9c9c;
         padding-top: 10px;
@@ -102,22 +101,22 @@ export default {
         font-size: 20px;
         margin-bottom: 20px;
         font-weight: 600;
-        color: #212934;
+        color: #212529;
     }
     .about-intro h4 {
         font-size: 16px;
         font-weight: 600;
-        color: #212934;
+        color: #212529;
         margin-bottom: 15px;
     }
     .about-intro .progress {
         height: 10px;
-        background-color: #05cfc838;
+        background-color: #755fb983;
         border-radius: 5px;
         margin-bottom: 20px;
     }
     .about-intro .progress-bar {
-        background-color: #05cfc9;
+        background-color: var(--main-color);
     }
     @keyframes border-transform {
         0%, 100% {

@@ -3,16 +3,32 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6">
-          <CoolLightBox :items="media" :index="index" @close="index = null">
-          </CoolLightBox>
           <div class="about-play">
-            <img src="/assets/images/about-img1.jpg" alt="About Images" />
+            <img
+              :src="
+                experienceSection.find((one) => one.key === 'experience_image')
+                  .value
+              "
+              alt="About Images"
+            />
             <div class="about-play-content">
-              <!-- <span>Watch Our Intro Video</span>
-                            <h2>Perfect Solution for It Services!</h2> -->
+              <span>Watch Our Intro Video</span>
+              <h2>
+                {{
+                  experienceSection.find(
+                    (one) => one.key === "experience_title_video"
+                  ).value
+                }}
+              </h2>
               <div class="play-on-area">
+                <CoolLightBox
+                  :items="media"
+                  :index="index"
+                  @close="index = null"
+                >
+                </CoolLightBox>
                 <a class="play-on popup-btn" @click="openGallery()">
-                  <font-awesome-icon icon="fa-solid fa-play" />
+                  <i class="fa-solid fa-play"></i>
                 </a>
               </div>
             </div>
@@ -21,45 +37,68 @@
         <div class="col-lg-6">
           <div class="about-content ml-25">
             <div class="section-title">
-              <span class="sp-color2">15 Years of Experience</span>
-              <h2>Right Partner for Software Innovation</h2>
+              <span class="sp-color2">{{
+                experienceSection.find((one) => one.key === "experience_title")
+                  .value
+              }}</span>
+              <h2>
+                {{
+                  experienceSection.find(
+                    (one) => one.key === "experience_sub_title"
+                  ).value
+                }}
+              </h2>
 
               <p>
-                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit
-                consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio
-                sit amet.
+                {{
+                  experienceSection.find(
+                    (one) => one.key === "experience_description"
+                  ).value
+                }}
               </p>
             </div>
             <div class="row">
               <div class="col-lg-6 col-md-6">
                 <ul class="about-list text-start">
-                  <li>
-                    <font-awesome-icon icon="fa-solid fa-circle-check" />Cost of
-                    Supplies and Equipment
-                  </li>
-                  <li>
-                    <font-awesome-icon icon="fa-solid fa-circle-check" />Bribed
-                    Autor Nisi Elit Volume
-                  </li>
-                  <li>
-                    <font-awesome-icon icon="fa-solid fa-circle-check" />Cost of
-                    Supplies and Equipment
+                  <li
+                    v-for="item in experienceSection
+                      .find((one) => one.key === 'experience_title_list')
+                      .value.split(',')
+                      .slice(
+                        0,
+                        Math.ceil(
+                          experienceSection
+                            .find((one) => one.key === 'experience_title_list')
+                            .value.split(',').length / 2
+                        )
+                      )"
+                    :key="item"
+                  >
+                    <i class="fa-solid fa-circle-check"></i> {{ item }}
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6 col-md-6">
                 <ul class="about-list about-list-2 text-start">
-                  <li>
-                    <font-awesome-icon icon="fa-solid fa-circle-check" />Change
-                    the Volume of Expected
-                  </li>
-                  <li>
-                    <font-awesome-icon icon="fa-solid fa-circle-check" />Easy to
-                    Customer Services
-                  </li>
-                  <li>
-                    <font-awesome-icon icon="fa-solid fa-circle-check" />Good
-                    Quality Products Services
+                  <li
+                    v-for="item in experienceSection
+                      .find((one) => one.key === 'experience_title_list')
+                      .value.split(',')
+                      .slice(
+                        Math.ceil(
+                          experienceSection
+                            .find((one) => one.key === 'experience_title_list')
+                            .value.split(',').length / 2
+                        ),
+                        Math.ceil(
+                          experienceSection
+                            .find((one) => one.key === 'experience_title_list')
+                            .value.split(',').length
+                        )
+                      )"
+                    :key="item"
+                  >
+                    <i class="fa-solid fa-circle-check"></i> {{ item }}
                   </li>
                 </ul>
               </div>
@@ -73,28 +112,36 @@
           </div>
         </div>
       </div>
-      <ModalVideo
-        channel="youtube"
-        videoId="tUP5S4YdEJo"
-        :isOpen.sync="videoIsOpen"
-      />
     </div>
+    <ModalVideo
+      channel="youtube"
+      :videoId="
+        experienceSection
+          .find((one) => one.key === 'experience_url_video')
+          .value.split('=')[1]
+      "
+      :isOpen.sync="videoIsOpen"
+    />
   </div>
 </template>
 
 <script>
 import ModalVideo from "../ModalVideo";
+
 export default {
   name: "AppAboutExperiance",
   components: {
     ModalVideo,
   },
+  props: ["experienceSection"],
   data() {
     return {
       media: [
         {
           type: "youtube",
-          thumb: "https://img.youtube.com/vi/WsptdUFthWI/hqdefault.jpg",
+          thumb: this.experienceSection.find(
+            (one) => one.key === "experience_url_video"
+          ).value,
           id: "tUP5S4YdEJo",
         },
       ],
@@ -118,10 +165,6 @@ export default {
 .about-play {
   position: relative;
   border-radius: 30px;
-  /* -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr012.svg); */
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center center;
-  -webkit-mask-repeat: no-repeat;
 }
 .about-play img {
   border-radius: 30px;
@@ -132,7 +175,7 @@ export default {
   bottom: 0;
   left: 0;
   max-width: 470px;
-  background-color: #25252538;
+  background-color: #21252938;
   border-bottom-left-radius: 30px;
   border-top-right-radius: 70%;
   padding: 100px 40px 70px 25px;
@@ -146,7 +189,7 @@ export default {
   right: 30px;
   width: 91.7%;
   height: 90.1%;
-  background-color: #05cfc9;
+  background-color: var(--main-color);
   border-bottom-left-radius: 30px;
   border-top-right-radius: 70%;
 }
@@ -168,7 +211,7 @@ export default {
 .about-play .about-play-content .play-on-area .play-on {
   width: 80px;
   height: 80px;
-  color: #05cfc9;
+  color: var(--main-color);
   background-color: #fff;
   text-align: center;
   font-size: 40px;
@@ -185,25 +228,24 @@ export default {
   text-align: start;
 }
 .about-area .section-title span {
-  color: rgb(0, 206, 200);
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 33.8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: block;
+  color: var(--main-color);
 }
 .about-area .section-title h2 {
-  color: rgb(0, 0, 0);
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 50.6px;
-  margin-bottom: 30px;
+  color: #212529;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 42px;
   text-align: left;
+  margin-top: 10px;
+  margin-right: 0px;
+  margin-bottom: 15px;
+  margin-left: 0px;
 }
-.about-content .seprator img {
-  width: 70px;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
+
 .about-area .section-title p {
   padding-top: 10px;
   margin-bottom: 0;
@@ -219,7 +261,7 @@ export default {
 }
 .about-area .about-content .about-list li {
   display: block;
-  color: #252525;
+  color: #212529;
   margin-bottom: 10px;
   font-weight: 500;
   -webkit-transition: 0.7s;
@@ -230,9 +272,9 @@ export default {
   transition: 0.5s;
   font-size: 15px;
 }
-.about-area .about-content .about-list li svg {
+.about-area .about-content .about-list li i {
   font-size: 26px;
-  color: #05cfc9;
+  color: var(--main-color);
   position: absolute;
   left: 0;
   top: -2px;
