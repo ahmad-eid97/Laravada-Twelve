@@ -10,7 +10,7 @@
             whyUs.find((one) => one.key === "why_choose_us_description").value
           }}
         </p>
-        <ul>
+        <ul v-if="whyUs.find((one) => one.key === 'why_choose_us_list').value">
           <li
             v-for="item in whyUs.find((one) => one.key === 'why_choose_us_list')
               .value"
