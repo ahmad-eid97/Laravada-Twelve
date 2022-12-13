@@ -15,7 +15,7 @@
         <div
           v-for="service in services.services"
           :key="service.id"
-          class="col-lg-3 col-sm-6 col-md-4 md-4"
+          class="col-lg-3 col-sm-6 col-md-4 mb-4"
           @click="$router.push(localePath(`/service/${service.id}`))"
         >
           <div class="services-card services-style-bg">
@@ -57,13 +57,6 @@ export default {
 </script>
 
 <style>
-.section-title {
-  margin: 0 auto;
-  padding: 0;
-  position: relative;
-  text-align: center;
-}
-
 .services-style-area .section-title span {
   margin-bottom: 8px;
   font-weight: 600;

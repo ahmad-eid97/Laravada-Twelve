@@ -12,7 +12,7 @@
         <a href="#" class="btn btn-primary"> Make an appointment </a>
         <a href="#" class="btn btn-alt">
           Get free consultation
-          <i class="fa-solid fa-arrow-right"></i>
+          <i :class="$i18n.locale === 'ar' ? 'fa-solid fa-arrow-left' : 'fa-solid fa-arrow-right'"></i>
         </a>
       </div>
       <div class="col-lg-6 image">

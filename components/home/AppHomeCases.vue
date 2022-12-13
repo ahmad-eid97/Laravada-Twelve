@@ -94,19 +94,17 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   font-size: 18px;
-  height: 400px;
+  /* height: 400px; */
   margin: 0 15px 30px;
   min-height: 400px;
   padding-bottom: 45px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 45px;
   justify-content: center;
 }
 .cases .item img {
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
   width: 100%;
-  height: 150px;
+  height: 250px;
+  border-radius: 5px 5px 0 0;
 }
 .cases .item h4 {
   color: rgb(0, 0, 0);
@@ -141,7 +139,7 @@ export default {
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
-  margin: 30px auto 0;
+  margin: 10px auto 0;
   min-height: 36px;
   min-width: 50px;
   padding-bottom: 8px;
