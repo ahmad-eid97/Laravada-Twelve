@@ -35,12 +35,17 @@
             <b-nav-item :to="localePath('/team')">Team</b-nav-item>
             <b-nav-item :to="localePath('/services')">Services</b-nav-item>
             <b-nav-item :to="localePath('/testimonials')">Projects</b-nav-item>
-            <b-nav-item :to="localePath('/blogs')">News & articles</b-nav-item>
+            <b-nav-item :to="localePath('/blogs')">News</b-nav-item>
+            <b-nav-item :to="localePath('/careers')">Career</b-nav-item>
+            <b-nav-item :to="localePath('/events')">Events</b-nav-item>
             <b-nav-item :to="localePath('/contact')">Contact</b-nav-item>
             <a href="#" @click="side = !side" class="btn">
               <i class="fa-solid fa-bag-shopping"></i>
               <span class="d-lg-none d-block">Side Bar</span>
             </a>
+            <div v-if="$store.state.user" class="logout" @click="logout">
+              <i class="fa-regular fa-right-from-bracket"></i>
+            </div>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -80,6 +85,12 @@ export default {
   },
   mounted() {},
   methods: {
+    logout() {
+      this.$store.commit("setUserData", null);
+      this.$cookies.remove("cms-auth");
+      this.$cookies.remove("cms-user");
+      this.$router.push(this.localePath("/login"));
+    },
     handleScroll() {
       if (window.pageYOffset > 30) {
         if (this.topOfPage) this.topOfPage = false;
@@ -97,6 +108,17 @@ header {
   right: 0;
   z-index: 10;
   background: transparent;
+}
+.logout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .onScroll {
   position: fixed;
