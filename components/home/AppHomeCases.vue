@@ -101,10 +101,11 @@ export default {
   justify-content: center;
 }
 .cases .item img {
-  margin: 0 auto 20px;
+  margin: 40px auto 20px;
   width: 100%;
-  height: 250px;
+  height: 200px;
   border-radius: 5px 5px 0 0;
+  object-fit: contain;
 }
 .cases .item h4 {
   color: rgb(0, 0, 0);
