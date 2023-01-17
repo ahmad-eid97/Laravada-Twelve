@@ -186,7 +186,8 @@ header {
   left: 0;
   right: 0;
   z-index: 10;
-  background: transparent;
+  background: #fff;
+  padding-bottom: 20px;
   .cart {
     width: 390px;
     height: 100vh;
@@ -307,6 +308,9 @@ header {
     display: none;
   }
 }
+.navbar-nav {
+  padding: 10px 0;
+}
 .outLarge {
   display: none;
   @include md {
@@ -373,7 +377,7 @@ nav {
   color: rgb(0, 0, 0);
   display: block;
   line-height: 23.4px;
-  padding: 2px 0;
+  padding: 5px 0;
 }
 
 .nav-item.active::after,
@@ -513,7 +517,9 @@ nav {
     font-weight: 400 !important;
     box-shadow: none !important;
     border: none !important;
-    min-width: 60px !important;
+    min-width: unset !important;
+    width: 100%;
+    min-height: 30px;
     position: relative;
     top: -3px;
     color: #000;

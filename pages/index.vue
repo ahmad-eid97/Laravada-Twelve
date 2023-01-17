@@ -1,10 +1,12 @@
 <template>
   <div class="home">
-    <app-home-slider></app-home-slider>
+    <app-home-slider :slides="slides"></app-home-slider>
     <app-home-competence></app-home-competence>
     <app-home-contact></app-home-contact>
     <app-home-cases :services="services"></app-home-cases>
     <app-home-why :whyUs="whyUs"></app-home-why>
+    <app-home-activities :activities="activities" />
+    <app-home-steps :steps="steps" />
     <!-- <app-home-feature></app-home-feature>
 
         <app-home-services></app-home-services>
@@ -48,12 +50,20 @@ import AppHomeCases from "../components/home/AppHomeCases.vue";
 import AppHomeWhy from "../components/home/AppHomeWhy.vue";
 
 import AppHomeTestimonials from "../components/home/AppHomeTestimonials.vue";
+import AppHomeActivities from "../components/home/AppHomeActivities.vue";
+import AppHomeSteps from "../components/home/AppHomeSteps.vue";
 // import AppHomeWhy from '../components/home/AppHomeWhy.vue'
 // @ is an alias to /src
 
 export default {
   name: "Home",
   async asyncData({ $axios, app }) {
+    const slides = await $axios.get("/sliders", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     const testimonials = await $axios.get("/testimonials");
 
     const services = await $axios.get("/services");
@@ -64,10 +74,25 @@ export default {
       },
     });
 
+    const activities = await $axios.get("/sections/activities", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
+    const steps = await $axios.get("/sections/steps", {
+      headers: {
+        "Accept-Language": app.i18n.locale,
+      },
+    });
+
     return {
+      slides: slides.data.data.sliders,
       testimonials: testimonials.data.data.testimonials,
       services: services.data.data.services,
       whyUs: whyUs.data.data,
+      activities: activities.data.data,
+      steps: steps.data.data,
     };
   },
   components: {
@@ -77,6 +102,8 @@ export default {
     AppHomeCases,
     AppHomeWhy,
     AppHomeTestimonials,
+    AppHomeActivities,
+    AppHomeSteps,
     // AppHomeFeature,
     // AppHomeBlogs,
     // AppHomeContactDivider,

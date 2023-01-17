@@ -1,182 +1,168 @@
 <template>
   <section class="intro">
-    <div class="row m-0 align-items-center">
-      <div class="col-lg-6">
-        <h4>Advice for your unique business needs</h4>
-        <h6>Achieve more for your business with us!</h6>
-        <p>
-          Faucibus orci luctus - ut pharetra augue. Nullam non sapien quam.
-          Nullam egestas, elit a viverra malesuada. Wondering ipsum dolor sit
-          amet?
-        </p>
-        <a href="#" class="btn btn-primary"> Make an appointment </a>
-        <a href="#" class="btn btn-alt">
-          Get free consultation
-          <i :class="$i18n.locale === 'ar' ? 'fa-solid fa-arrow-left' : 'fa-solid fa-arrow-right'"></i>
-        </a>
+    <VueSlickCarousel :arrows="true" :fade="true" :dots="false">
+      <div
+        class="item item-1"
+        v-for="slide in slides"
+        :key="slide.id"
+        :style="{ backgroundImage: `url(${slide.background})` }"
+      >
+        <div class="row h-100 m-0 align-items-start">
+          <div class="overlay"></div>
+          <div class="col-md-6">
+            <h1>
+              {{ slide.title }}
+            </h1>
+            <p>
+              {{ slide.description }}
+            </p>
+            <a :href="slide.link" class="btn"
+              ><i class="fa-brands fa-mixcloud mx-2"></i> Explore solutions</a
+            >
+          </div>
+          <div class="col-md-6">
+            <img class="img-fluid" :src="slide.image" alt="slide image" />
+          </div>
+        </div>
       </div>
-      <div class="col-lg-6 image">
-        <img src="/assets/images/blob2.svg" alt="blob" class="blobImage1" />
-        <img
-          class="img-fluid mainImage"
-          src="https://the7.io/business-advisors/wp-content/uploads/sites/72/elementor/thumbs/art011-pds1a8pw55vosw0svd1ymgwfx0v59wcze4nxbvvq4w.jpg"
-          alt=""
-        />
-        <img src="/assets/images/blob1.svg" alt="blob" class="blobImage2" />
-      </div>
-    </div>
+    </VueSlickCarousel>
   </section>
 </template>
 
 <script>
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import "animate.css/animate.css";
 export default {
-  name: "AppHomeSlider",
+  name: "AppHomeIntro",
+  props: ["slides"],
+  components: {
+    VueSlickCarousel,
+  },
   data() {
     return {};
   },
-  methods: {},
-  mounted() {},
 };
 </script>
 <style lang="scss">
 .intro {
-  min-height: 100vh;
-  position: relative;
-  padding: 200px 60px 90px;
+  padding-top: 0;
+  margin-top: 100px;
 }
-.intro h4 {
-  color: rgb(0, 206, 200);
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 33.8px;
-  margin-bottom: 30px;
+.intro .item-1 {
+  background-color: rgba(255, 255, 255, 0.5);
+  /* background-image: url("https://avada.theme-fusion.com/information-technology/wp-content/uploads/sites/81/2016/11/avada-it-clouds1.png"); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-.intro h6 {
-  color: rgb(0, 0, 0);
-  font-size: 46px;
-  font-weight: 400;
-  line-height: 50.6px;
-  margin-bottom: 30px;
-  text-align: left;
-}
-
-.blobImage1 {
+.overlay {
   position: absolute;
-  top: -100px;
+  top: 0;
   left: 0;
-  opacity: 0.3;
-  width: 400px;
-  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+.intro .item .row {
+  padding-top: 7vw;
+  padding-right: 30px;
+  padding-bottom: 8vw;
+  padding-left: 30px;
+  min-height: calc(100vh - 110px);
+}
+.intro .item h1 {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 114px;
+  padding-top: 70px;
+  position: relative;
+  z-index: 2;
 }
 
-.blobImage2 {
-  position: absolute;
-  bottom: -100px;
-  right: 0;
-  opacity: 0.3;
-  width: 400px;
-  z-index: 1;
-}
-
-@include sm {
-  .intro {
-    padding: 200px 20px 90px;
-  }
-  .intro h4 {
-    font-size: 20px;
-    line-height: 33.8px;
-  }
-  .intro h6 {
-    font-size: 30px;
-    line-height: 40.6px;
-  }
-  img {
-    width: 450px;
-  }
+.intro .item p {
+  font-size: 1.5rem !important;
+  position: relative;
+  z-index: 2;
 }
 
 @include xs {
-  img {
-    width: 300px;
+  .intro .item h1 {
+    font-size: 60px;
+    line-height: 80px;
   }
 }
 
-.intro p {
-  color: rgb(94, 100, 107);
-  font-size: 22px;
-  line-height: 33px;
-  margin-bottom: 40px;
-}
-.intro .btn {
-  align-items: center;
-  background-color: rgb(56, 71, 210);
-  border-radius: 8px;
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 10px 0px;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
+.intro .item p {
+  font-size: 20px;
+  color: #fff;
   font-weight: 400;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.75;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  padding: 10px;
+}
+.item .btn {
+  border-radius: 25px 25px 25px 25px;
+  padding-bottom: 17px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 17px;
+  font-weight: 500;
   justify-content: center;
-  line-height: 18px;
-  padding-bottom: 10px;
-  padding-left: 26px;
-  padding-right: 26px;
-  padding-top: 10px;
-  text-align: center;
-  margin-right: 30px;
-  margin-bottom: 20px;
-  min-height: 56px;
-  display: inline-flex;
-}
-.intro .btn-primary:hover {
-  background-color: rgb(24, 37, 153);
-}
-.intro .btn-alt {
-  background-color: transparent;
-  color: rgb(56, 71, 210);
+  letter-spacing: 2px;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  background-color: var(--main-color);
+  line-height: 17px;
+  min-width: 200px;
+  text-transform: uppercase;
+  font-family: "Roboto";
+  border: none;
   position: relative;
-}
-.intro .btn-alt i {
-  margin-left: 5px;
-  font-size: 14px;
-}
-.intro .btn-alt::after {
-  content: "";
-  position: absolute;
-  left: 24px;
-  right: 24px;
-  height: 2px;
-  background: #ced3ff;
-  bottom: 12px;
-}
-.intro .btn-alt:hover {
-  color: rgb(56, 71, 210);
-}
-.intro .btn-alt:hover::after {
-  background: #9ea8fe;
-}
-.intro .image {
-  position: relative;
-}
-.intro .image img {
-  /* -webkit-mask-image: url(https://the7.io/business-advisors/wp-content/uploads/sites/72/2021/09/sqr012.svg); */
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center center;
-  -webkit-mask-repeat: no-repeat;
-  max-width: 580px;
-  border-radius: 30% 70% 25% 75% / 52% 47% 53% 48%;
-}
-.mainImage {
-  position: relative !important;
   z-index: 2;
 }
-.intro .image .image-icon {
-  color: rgb(94, 100, 107);
-  font-size: 18px;
-  position: absolute;
-  left: 390px;
-  top: 345px;
-  z-index: 3;
-  width: 140px;
+.item .btn:hover {
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  background-color: var(--main-color);
+  border: none;
+}
+
+.slick-active .item h1 {
+  animation: fadeInLeft;
+  animation-duration: 2s;
+}
+.slick-active .item p {
+  animation: fadeInLeft;
+  animation-duration: 3s;
+}
+.slick-active .item .btn {
+  animation: fadeInUp;
+  animation-duration: 4s;
+}
+.slick-active .item .btn.blue {
+  animation: fadeInUp;
+  animation-duration: 5s;
+}
+.slick-active .item img {
+  animation: fadeIn;
+  animation-duration: 5s;
+  position: relative;
+  z-index: 2;
 }
 </style>
