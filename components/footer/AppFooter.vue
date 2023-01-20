@@ -1,6 +1,7 @@
 <template>
   <footer>
-    <div class="overlay"></div>
+    <subscribe />
+    <!-- <div class="overlay"></div> -->
     <div class="container">
       <div class="section-content">
         <div class="row m-0">
@@ -69,9 +70,10 @@
 </template>
 
 <script>
+import Subscribe from "../subscribe/subscribe.vue";
 export default {
   name: "AppFooter",
-  components: {},
+  components: { Subscribe },
   data() {
     return {};
   },
@@ -81,7 +83,7 @@ export default {
 </script>
 <style>
 footer {
-  padding: 90px 30px 0;
+  padding: 20px 30px 0;
   background-color: rgb(32, 43, 143);
   position: relative;
 }
