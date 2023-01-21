@@ -49,6 +49,7 @@ export default {
 .intro {
   padding-top: 0;
   margin-top: 100px;
+  padding-bottom: 0;
 }
 .intro .item-1 {
   background-color: rgba(255, 255, 255, 0.5);
@@ -65,7 +66,7 @@ export default {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
 .intro .item .row {

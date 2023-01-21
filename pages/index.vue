@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <app-home-slider :slides="slides"></app-home-slider>
+    <app-home-partners :partners="partners" />
     <app-home-competence></app-home-competence>
     <app-home-contact></app-home-contact>
     <app-home-cases :services="services"></app-home-cases>
@@ -52,6 +53,7 @@ import AppHomeWhy from "../components/home/AppHomeWhy.vue";
 import AppHomeTestimonials from "../components/home/AppHomeTestimonials.vue";
 import AppHomeActivities from "../components/home/AppHomeActivities.vue";
 import AppHomeSteps from "../components/home/AppHomeSteps.vue";
+import AppHomePartners from "../components/home/AppHomePartners.vue";
 // import AppHomeWhy from '../components/home/AppHomeWhy.vue'
 // @ is an alias to /src
 
@@ -74,6 +76,8 @@ export default {
       },
     });
 
+    const partners = await $axios.get("/partners");
+
     const activities = await $axios.get("/sections/activities", {
       headers: {
         "Accept-Language": app.i18n.locale,
@@ -88,6 +92,7 @@ export default {
 
     return {
       slides: slides.data.data.sliders,
+      partners: partners.data.data.partners,
       testimonials: testimonials.data.data.testimonials,
       services: services.data.data.services,
       whyUs: whyUs.data.data,
@@ -104,6 +109,7 @@ export default {
     AppHomeTestimonials,
     AppHomeActivities,
     AppHomeSteps,
+    AppHomePartners,
     // AppHomeFeature,
     // AppHomeBlogs,
     // AppHomeContactDivider,
