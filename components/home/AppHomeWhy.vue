@@ -42,13 +42,154 @@ export default {
     return {};
   },
   methods: {},
-  mounted() {},
+  mounted() {
+    document
+      .querySelector(".why")
+      .style.setProperty(
+        "--why-bg",
+        this.whyUs.find(
+          (one) => one.key === "why_choose_us_background_active_section"
+        ).value === "color"
+          ? this.whyUs.find(
+              (one) => one.key === "why_choose_us_background_color_section"
+            ).value
+          : `url(${
+              this.whyUs.find(
+                (one) => one.key === "why_choose_us_background_image_section"
+              ).value
+            })`
+      );
+
+    document
+      .querySelector(".why")
+      .style.setProperty(
+        "--why-fontSize",
+        `${
+          this.whyUs.find(
+            (one) => one.key === "why_choose_us_font_size_section"
+          ).value
+        }px`
+      );
+
+    if (
+      this.whyUs.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ) &&
+      this.whyUs.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ).value === "both"
+    ) {
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--why-border-top",
+          `${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--why-border-bottom",
+          `${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.whyUs.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ) &&
+      this.whyUs.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ).value === "top"
+    ) {
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--why-border-top",
+          `${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+    } else if (
+      this.whyUs.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ) &&
+      this.whyUs.find(
+        (one) => one.key === "why_choose_us_border_position_section"
+      ).value === "bottom"
+    ) {
+      document
+        .querySelector(".why")
+        .style.setProperty(
+          "--why-border-bottom",
+          `${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_size_section"
+            ).value
+          }px ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_type_section"
+            ).value
+          } ${
+            this.whyUs.find(
+              (one) => one.key === "why_choose_us_border_color_section"
+            ).value
+          }`
+        );
+    }
+  },
 };
 </script>
-<style>
+<style lang="scss">
 .why {
   position: relative;
-  padding: 0 0 90px;
+  padding: 90px 0 90px;
+
+  --why-bg: #fff;
+  --why-fontSize: 20px;
+  --why-border-top: 0px solid #fff;
+  --why-border-bottom: 0px solid #fff;
+
+  background: var(--why-bg);
+  border-top: var(--why-border-top);
+  border-bottom: var(--why-border-bottom);
+  background-repeat: no-repeat;
+  background-size: cover;
+  h3 {
+    font-size: var(--why-fontSize);
+  }
 }
 .why h3 {
   color: rgb(0, 0, 0);
