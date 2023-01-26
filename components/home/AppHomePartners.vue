@@ -53,6 +53,7 @@ export default {
 </script>
 <style>
 .specPartners {
+  padding-top: 50px !important;
 }
 .partners {
   padding: 0px 100px;
