@@ -28,7 +28,7 @@
           <div class="col-sm-6 col-md-4">
             <div class="footer-item">
               <div class="footer-title">
-                <h5>Services</h5>
+                <h5>Other Pages</h5>
               </div>
               <ul class="footer-list">
                 <!-- <li><a href="#">About Us</a></li> -->
