@@ -6,7 +6,12 @@
           <li>
             <span class="tel">
               <i class="fa-solid fa-phone"></i>
-              +11111111111111
+
+              {{
+                $store.state.websiteSettings.find(
+                  (one) => one.key === "contact_phone"
+                ).plain_value
+              }}
             </span>
           </li>
           <li>
