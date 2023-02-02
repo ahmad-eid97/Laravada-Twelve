@@ -5,9 +5,15 @@
     <app-home-competence></app-home-competence>
     <app-home-contact></app-home-contact>
     <app-home-cases :services="services"></app-home-cases>
-    <app-home-why :whyUs="whyUs"></app-home-why>
-    <app-home-activities :activities="activities" />
-    <app-home-steps :steps="steps" />
+    <div v-if="whyUs.status">
+      <app-home-why :whyUs="whyUs.data"></app-home-why>
+    </div>
+    <div v-if="activities.status">
+      <app-home-activities :activities="activities.data" />
+    </div>
+    <div v-if="steps.status">
+      <app-home-steps :steps="steps.data" />
+    </div>
     <!-- <app-home-feature></app-home-feature>
 
         <app-home-services></app-home-services>
@@ -160,9 +166,9 @@ export default {
       partners: partners.data.data.partners,
       testimonials: testimonials.data.data.testimonials,
       services: services.data.data.services,
-      whyUs: whyUs.data.data,
-      activities: activities.data.data,
-      steps: steps.data.data,
+      whyUs: whyUs.data,
+      activities: activities.data,
+      steps: steps.data,
     };
   },
   components: {
