@@ -5,13 +5,13 @@
     <app-home-competence></app-home-competence>
     <app-home-contact></app-home-contact>
     <app-home-cases :services="services"></app-home-cases>
-    <div v-if="whyUs.status">
+    <div v-if="$store.state.sectionsStatus.why_choose_us">
       <app-home-why :whyUs="whyUs.data"></app-home-why>
     </div>
-    <div v-if="activities.status">
+    <div v-if="$store.state.sectionsStatus.activities">
       <app-home-activities :activities="activities.data" />
     </div>
-    <div v-if="steps.status">
+    <div v-if="$store.state.sectionsStatus.steps">
       <app-home-steps :steps="steps.data" />
     </div>
     <!-- <app-home-feature></app-home-feature>
